@@ -1,0 +1,43 @@
+.containerHomeCard{
+    width: 200px;
+    height: 350px;
+    border: 4 white groove;
+    
+    
+
+}
+.contenedorHome{
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.estrella{
+    width: 30px;
+    height: 30px; 
+}
+.anterior{
+    width: 30px;
+    height: 30px; 
+    cursor: pointer;
+    
+}
+.siguiente{
+    width: 30px;
+    height: 30px; 
+    cursor: pointer;
+}
+.ayuda{
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 70%;
+    height: 70%;
+    border-radius: 100%;
+    padding: 5px;
+
+}

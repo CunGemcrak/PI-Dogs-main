@@ -1,0 +1,64 @@
+import { AllDOGS, FILTROINPUT, TEMPERAMENTO, ORDERAZ, FILTROTEMPERAMENTO, COPYDOG } from "./action-types";
+
+const initialState = {
+    allDogs: [],
+    copydogs:[],
+    temperamento:[]
+}
+
+const reducer = (state= initialState, {type, payload})=>{
+   // console.log("entro al reducer la informacion" + payload);
+    switch( type ){
+        case AllDOGS:
+            return{
+                ...state, allDogs:payload,
+                copydogs:payload
+            }
+        case TEMPERAMENTO:
+            return {
+                ...state, temperamento:payload
+            }
+        case FILTROINPUT:
+            const copiedAllDogs = state.copydogs.slice(); // Copia el estado
+            const busquedaporname = copiedAllDogs.filter(element => element.name.toLowerCase().includes(payload?.toLowerCase()))
+            return {
+                ...state,
+                allDogs:busquedaporname
+            }
+        case ORDERAZ:
+            let orderedDogs = state.copydogs.slice();
+            if (payload === 'A') {
+                orderedDogs.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (payload === 'B') {
+                orderedDogs.sort((a, b) => b.name.localeCompare(a.name));
+            }
+            console.log('esto manda el reduces ' + JSON.stringify(orderedDogs))
+            return {
+                ...state,
+                allDogs:orderedDogs
+            }
+        case FILTROTEMPERAMENTO:
+            let copy = state.copydogs.slice();
+            const busquedaportemperamento = copy.filter(element => {
+                const temperament = element.temperament;
+                if (temperament) {
+                    return temperament.toLowerCase().includes(payload?.toLowerCase());
+                }
+                return false;
+            });
+            console.log("Esta es la busqueda " + busquedaportemperamento);
+            return {
+                ...state,
+                allDogs:busquedaportemperamento
+            }
+        case COPYDOG:
+            return{
+                ...state,
+                allDogs: state.copydogs
+            } 
+        default:
+            return {...state}
+    }
+}
+
+export default reducer;

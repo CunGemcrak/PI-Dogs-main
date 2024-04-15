@@ -1,0 +1,54 @@
+.principal{
+    display: flex;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+}
+
+.containerCard{
+    width: 180px;
+    height: auto;
+    background-color: white;
+    margin: 10px;
+    border: yellow 2px groove;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+
+}
+
+.imagendogs{
+    width: 172px;
+    min-width: 160px;
+    min-height: 140px;
+    height: 140px;
+    padding: 5px;
+}
+.submenuCard{
+    color: white;
+    background-color: rgb(98, 0, 0);
+    height: auto;
+}
+.textocards{
+    font-size: 10px;
+    color:yellow;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+}
+
+.textocards2{
+    font-size: 10px;
+    color:white;
+ padding: 1px;
+}
+.textocards3{
+    font-size: 10px;
+    color:greenyellow;
+    padding: 1px;
+}
+
+

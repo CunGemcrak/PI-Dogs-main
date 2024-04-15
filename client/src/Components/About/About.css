@@ -1,0 +1,57 @@
+.containerAbaut{
+    display: flex;
+    margin:3px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7); /* Color negro con alpha 0.3 */
+    div{
+         align-items: center;
+
+        .info{
+             border: 2px red solid;
+             width: 500px;
+             height: 600px;
+             justify-content: space-between;
+             margin:10px;
+             div{
+                font-size: 24px;
+             }
+
+             p{
+                    font-size: 20px;
+                    text-align: justify;
+                    margin-left: 20px;
+             }
+        }
+    }
+
+    .divimagen{
+        justify-content: space-between;
+        img{
+            width: auto;
+             height: 600px;
+             border: 2px greenyellow solid;
+        }
+
+    }
+    
+    
+   
+}
+
+.manejoimagenmario{
+    margin: 10px;
+
+    width: 15vw;
+    height: 500px;
+   
+}
+.manejoimagenluigui{
+    margin: 10px;
+    width: 15vw;
+    height: 600px;
+   
+}

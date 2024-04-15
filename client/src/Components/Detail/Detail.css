@@ -1,0 +1,70 @@
+.containerDetail{
+    display: flex;
+    margin: 30px;
+    padding: 5px;
+    animation: fadeIn 1s ease-in-out; 
+    border: 5px solid;
+    border-image: linear-gradient(to right, red, rgb(1, 255, 22)) 1;
+    background-color: rgba(0, 0, 0, 0.7); /* Color negro con alpha 0.3 */
+    width: 1000px;
+    min-width: 350px;
+    margin: 10px; /* Elimina el margen exterior */
+    padding: 0; /* Elimina el padding exterior */
+}
+
+izquierda{
+    width:auto;
+
+}
+.imagen_dogs{
+    width: 500px;
+    padding-left: 10px;
+    margin-right: 20px;
+}
+
+.derecha{
+    width: 400px;
+    padding-right: 10px;
+    text-align: justify;
+    justify-content: left;
+}
+
+.derecha, .izquierda {
+    margin-top: 10px ;
+    margin-bottom: 10px; /* Ajusta el margen inferior entre los elementos */
+}
+
+
+.Gurpo_dogs{
+    font-size: 12px;
+}
+.titulo{
+    flex: 1; /* El título ocupará el espacio disponible */
+    text-align: center; /* Centra el texto horizontalmente */
+    margin: 0; /* Elimina el margen por defecto del h1 */
+}
+
+.cerrar {
+    text-decoration: none;
+    color: brown;
+    margin-left: 10px; /* Margen izquierdo para separar del título */
+}
+
+.super_titulo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; /* Opcional: Añade un relleno para separar del borde */
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Empieza con opacidad 0 */
+        transform: translateY(800px); /* Empieza desplazado hacia abajo */
+    }
+    to {
+        opacity: 1; /* Termina con opacidad 1 */
+        transform: translateY(0); /* Termina sin desplazamiento */
+    }
+}

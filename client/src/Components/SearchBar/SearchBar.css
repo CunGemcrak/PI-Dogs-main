@@ -1,0 +1,60 @@
+.container-SearchBar{
+  display: flex;
+  border-left: 4px white groove;
+  border-right: 4px white groove;
+  border-bottom: 4px white groove;
+  /*justify-content: flex-end;*/
+  border-radius: 20px;
+  padding: 5px;
+  width: auto;
+}
+.logo {
+  display: flex;
+  justify-content: flex-end; /* Alinea horizontalmente al centro */
+  align-items: center; /* Alinea verticalmente al centro */
+  width: 30px; /* Ajusta el ancho de la imagen según sea necesario */
+  height: 30px; /* Ajusta la altura de la imagen según sea necesario */
+  background-image: url('../../img/Logo/logofinal.png');
+  background-size: cover;
+  background-position: center;
+  margin: 5px;
+}
+
+.botonesTemperamento{
+  border: solid white 2px;
+  padding: 2px;
+  width: 100px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  height: 25px;
+  color: yellow;
+  background-color: green;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  margin: 5px;
+
+}
+
+
+
+
+.botonesTemperamento:hover {
+  background-color: #dd2323af;
+  color: #ffee00;
+  border: solid yellow 2px;
+  height: 25px;
+}
+
+.botonesTemperamento:focus,
+.botonesTemperamento:focus-visible {
+  outline: 4px auto rgb(0, 0, 0);
+  background: linear-gradient(to bottom, pink, rgb(8, 235, 45));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  color: rgb(255, 0, 0);
+  text-align: justify;
+}

@@ -1,0 +1,14 @@
+.containerCards{
+    margin-top:0;
+    width: 75vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribuye uniformemente las columnas */
+    gap: 1px;
+    background-color: rgba(0, 0, 0, 0.7); /* Color negro con alpha 0.3 */
+   
+}
+.card{
+    transition: transform 0.3s ease-in-out;
+}
+

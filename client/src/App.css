@@ -1,0 +1,138 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alinea el contenido al principio */
+  align-items: center;
+  width: 100vw;
+  min-width: 1025px;
+  height: 100vh;
+  background-image: url('./img/loading/imgloading.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0; /* Ajusta el margen para centrar */
+  padding: 0; /* Ajusta el padding para centrar */
+
+}
+
+.App-header {
+  width: 100%;
+  text-align: center;
+}
+
+/* Estilos adicionales para el logo */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.grupo,
+.grupo2 {
+  display: flex;
+  align-items: center;
+}
+
+.input-search {
+  flex: 1; /* El input ocupa todo el espacio disponible */
+  height: 25px;
+}
+
+.botones {
+  border: solid white 2px;
+  padding: 2px;
+  width: 110px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  height: 25px;
+  color: yellow;
+  background-color: green;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  margin: 5px;
+
+}
+
+.botones:hover {
+  background-color: #dd2323af;
+  color: #ffee00;
+  border: solid yellow 2px;
+  height: 25px;
+}
+
+.botones:focus,
+.botones:focus-visible {
+  outline: 4px auto pink;
+  background: linear-gradient(to bottom, pink, rgb(8, 235, 45));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  color: white;
+}
+
+
+
+input {
+  background-color: #dd2323af;
+  color: #ffee00;
+  border: solid yellow 2px;
+  height: 20px;
+  border-radius: 5px;
+  width: 180px;
+  margin: 5px;
+}
+
+input:focus {
+  background-color: #530000af;
+  color: #ffee00;
+  font-weight: bold;
+  padding: 2px;
+  border: solid yellow 2px;
+  height: 20px;
+  width: 180px;
+}
+
+h1{
+    font-size: 20px;
+    margin-top: 0;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold; 
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, rgb(0, 255, 34), rgb(255, 255, 0));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+@media (max-width: 350px) {
+  .grupo{
+    display: none;
+  }
+}
+
+
+
