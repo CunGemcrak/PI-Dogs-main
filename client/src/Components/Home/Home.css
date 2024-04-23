@@ -35,9 +35,15 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 70%;
-    height: 70%;
+    width: 25%;
+    height: 25%;
     border-radius: 100%;
     padding: 5px;
+
+      /* Aplicar el degradado en el fondo */
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+
+ 
+  overflow: hidden; /* Para recortar el GIF si es necesario */
 
 }

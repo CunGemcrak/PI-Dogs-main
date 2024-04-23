@@ -10,13 +10,13 @@ Años de vida.
 temperament
 */
 const busquedaDog = async (req, res)=>{
-    const { name, url, height, weight, life_span, temperament  } = req.body
-   console.log('este es el query' + name + ' - ' + url + ' - '+ height + ' - ' +  weight + ' - ' + life_span + ' - '+ temperament)
+    const { name, url, height, weight, life_span, temperament, bred_for  } = req.body
+   console.log('este es el query' + name + ' - ' + url + ' - '+ height + ' - ' +  weight + ' - ' + life_span + ' - '+ temperament + '-' + bred_for)
 
 
     try {
       //  console.log("entro al try");
-        if(!name || !url || !height || !weight || !life_span || !temperament.length === 0 ){
+        if(!name || !url || !height || !weight || !life_span || !temperament.length === 0 || !bred_for){
             return res.status(404).json({message: "Faltan datos"})
         }
      //   console.log("PAso el validar");
@@ -40,7 +40,8 @@ const busquedaDog = async (req, res)=>{
             url,
             height,
             weight,
-            life_span
+            life_span,
+            bred_for
         })
         console.log("Datos guardados correctamente");
        

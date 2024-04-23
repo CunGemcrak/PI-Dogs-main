@@ -5,7 +5,7 @@ import izquieda from '../../img/desplazar/izquierda.png'
 import derecha from '../../img/desplazar/derecha.png'
 import estrella from '../../img/desplazar/image.png'
 
-import buscando from '../../img/loading/loadingdog/image_processing20200701-12577-15bg800.gif'
+import buscando from '../../img/loading/loadingdog/loadingdog.gif'
 
 
 import Cards from '../Cards/Cards';

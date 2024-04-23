@@ -17,6 +17,15 @@ if (userData.name && (userData.name.trim().length < 4 || userData.name.trim().le
     errors.name = 'El nombre debe tener entre 4 y 40 caracteres';
 }
 
+if (userData.bred_for && userData.bred_for.trim().length === 0) {
+    errors.bred_for = 'El nombre no debe estar vacío';
+}
+
+if (userData.bred_for && (userData.bred_for.trim().length < 4 || userData.bred_for.trim().length > 120)) {
+    errors.bred_for = 'El bred for debe tener entre 4 y 100 caracteres';
+}
+
+
 if (userData.Temperament && userData.Temperament.trim().length === 0) {
     errors.Temperament = 'El Temperament no debe estar vacío';
 }

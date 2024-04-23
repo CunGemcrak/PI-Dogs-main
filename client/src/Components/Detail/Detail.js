@@ -88,7 +88,7 @@ const Detail = () => {
                 bred for: <ul>
                     {dog.breeds?.[0]?.bred_for?.split(',').map((bred_for, index) => (
                         <li key={index}>{bred_for.trim()}</li>
-                    )) || 'No information available'}
+                    )) || dog.bred_for }
                 </ul>
                 </div>
 

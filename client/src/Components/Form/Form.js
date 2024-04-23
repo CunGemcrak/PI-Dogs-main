@@ -11,22 +11,26 @@ const Form = ()=>{
     const dispatch = useDispatch(); 
     const [errors, setErrors] = useState({});
     const [conname, setConname] =useState(40)
+    const [conbred_for, seConbred_for] =useState(120)
     const [altura, setAltura] =useState('')
-    const [iniAltura, setIniAltura] =useState(0)
-    const [finAltura, setFinAltura] =useState(0)
+    const [iniAltura, setIniAltura] =useState('--')
+    const [finAltura, setFinAltura] =useState('--')
     const [pesokg, SetPesoKg] = useState('')
-    const [pinicial, setPesoIni]  =useState(0)
-    const [pesofin, setPesoFin] =useState(0)
+    const [pinicial, setPesoIni]  =useState('--')
+    const [pesofin, setPesoFin] =useState('--')
     const [vida, setVida] = useState('')
     const [iniciovida, setInicioVida]=useState(0)
     const [finalvida, setFinalVida] = useState(0)
     const [conet, setConet] = useState(0)
+    
     const [userDatatem, setUserDatatem] = useState({ Temperament: '' });
     const [temperTem, setTemperTem] = useState([]);
     const temperamento = useSelector((state) => state.temperamento)
     const [userData, setUserData]=useState({
         name:'',
         image:'',
+        bred_for:'',
+        Temperament: ''
     });
     
     const [dataquery, setDataQuery] = useState({})
@@ -37,8 +41,8 @@ const Form = ()=>{
         setAltura('de ' + iniAltura + '  a ' + finAltura);
         SetPesoKg('de ' + pinicial + 'a ' + pesofin);
         setVida('de ' + iniciovida + ' a ' + finalvida);
-        setDataQuery({ 'name': userData.name, 'url': userData.image, 'life_span': vida, 'weight': pesokg, 'height': altura, 'temperament': temperTem });
-    }, [iniAltura, finAltura, pinicial, pesofin, iniciovida, finalvida, vida, userData.name, userData.image, pesokg, altura, temperTem]);
+        setDataQuery({ 'name': userData.name, 'url': userData.image, 'life_span': vida, 'weight': pesokg, 'height': altura, 'temperament': temperTem, 'bred_for': userData.bred_for });
+    }, [iniAltura, finAltura, pinicial, pesofin, iniciovida, finalvida, vida, userData.name, userData.image, pesokg, altura, temperTem, userData.bred_for]);
     
 
     const handlChange = (event) =>{
@@ -49,6 +53,9 @@ const Form = ()=>{
             if (value.length<=40) {
                     setConname(40-value.length); // Actualizar conname con la nueva longitud
                 }
+        }else
+        if(name === 'bred_for'){
+            seConbred_for(120-value.length);
         }
 
 
@@ -66,8 +73,10 @@ const Form = ()=>{
     }
 
 
-    const handleGuardar =async (event)=>{
+    const handleGuardar =async ()=>{
        // console.log("este es el data query"+JSON.stringify(dataquery))
+       
+       
         try {
             const endpoint = 'http://localhost:3001/dogs'
             const response = await axios.post(endpoint, dataquery)
@@ -75,6 +84,8 @@ const Form = ()=>{
             alert(response.data.message)
             dispatch(Alldogs())
             dispatch(AllTemperamento())
+           // alert("paso el dispach Temperamento")
+            limpiar_todo();
 
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
@@ -88,9 +99,31 @@ const Form = ()=>{
        
 
     }
+    const limpiar_todo = ()=>{
+       
+        setUserData({ ...userData, name: '', image: '', bred_for: '', Temperament: '' })
+       
+        setIniAltura('--')
+        setFinAltura('--')
+        setPesoIni('--')
+        setPesoFin('--')
+        setInicioVida('--')
+        setFinalVida('--')
+        setTemperTem([])
+        setConet(0)
+        setConname(40)
+        seConbred_for(120)
+        document.getElementById('inicio').selectedIndex = 0
+        document.getElementById('final').selectedIndex = 0
+        document.getElementById('iniciokg').selectedIndex = 0
+        document.getElementById('finalkg').selectedIndex = 0
+        document.getElementById('iniciovida').selectedIndex = 0
+        document.getElementById('finalvida').selectedIndex = 0
+        document.getElementById('ElTemperament').selectedIndex = 0
+      
+    }
 
-
-    const handlSeected = (event)=>{
+    const handlSelected = (event)=>{
         const {value, id}=event.target
         
                 if((id==="final" && value !==0)){
@@ -168,9 +201,18 @@ const handleSelecTem = (event) => {
 };
 
     const agregarTemperamento = () => {
+       // alert(temperTem)
+     
         if (temperTem.length >= 5) {
           //  alert("Solo se admiten 5 temperamentos");
             setErrors({ ...errors, Temperament: 'Solo se admiten 5 temperamentos' });
+        } else
+
+       // if (temperTem.includes(userData.Temperament)) {
+        if (userData.Temperament && userData.Temperament.trim().length >= 4 && userData.Temperament.trim().length <= 30) {
+        if(temperTem.some(temp => temp.toLowerCase() === userData.Temperament.toLowerCase())){
+            // Mostrar mensaje de error o tomar la acción que desees
+            setErrors({ ...errors, Temperament: 'El temperamento ya ha sido seleccionado' });
         } else
         if (userData.Temperament && userData.Temperament.trim().length > 0 && temperTem.length < 5) {
             setTemperTem([...temperTem, userData.Temperament.trim()]);
@@ -178,9 +220,10 @@ const handleSelecTem = (event) => {
             // Actualizar el contador conet si es necesario
             setConet(conet + 1);
             userData.Temperament=''
-        } else {
+        } 
+    }else {
             // Establecer el mensaje de error en caso de que la condición no se cumpla
-            setErrors({ ...errors, Temperament: 'El Temperamento debe tener entre 1 y 5 caracteres' });
+            setErrors({ ...errors, Temperament: 'El Temperamento debe tener entre 4 y 30 caracteres' });
         }
     };
     
@@ -189,6 +232,7 @@ const handleSelecTem = (event) => {
         setTemperTem(nuevosTemperamentos);
         setConet(conet-1)
     };
+
 
 
 
@@ -221,8 +265,22 @@ const handleSelecTem = (event) => {
                                                 errors.name && <p className='error'>* {errors.name}</p>
                                             }
                                 </div>
-                        
-
+                        bred for: 
+                        <input 
+                            type="text" 
+                            name="bred_for" 
+                            value={userData.bred_for}
+                            onChange={handlChange}
+                            maxLength={120}
+                            placeholder="Bread For"
+                            title='No Puede ser mayor a 120 caracteres'
+                            /><label id='bred_for_con'>quedan {conbred_for} caracteres</label>
+                            <br/>
+                        <div>
+                                {
+                                                errors.bred_for && <p className='error'>* {errors.bred_for}</p>
+                                            }
+                                </div>
                                           
                                           
                                           
@@ -232,7 +290,7 @@ const handleSelecTem = (event) => {
                                           
                                           
                                            height: 
-                                      <select className="plegablefrom" id='inicio' name='inicio' onChange={handlSeected}>
+                                      <select className="plegablefrom" id='inicio' name='inicio' onChange={handlSelected}>
                                          <option value="No">De</option>
                                          
                                              {
@@ -243,7 +301,7 @@ const handleSelecTem = (event) => {
                                          </select> 
                                          <label className='labeldosgs'>a</label>   
                                            
-                                           <select className="plegablefrom" id='final' name='final' onChange={handlSeected}>
+                                           <select className="plegablefrom" id='final' name='final' onChange={handlSelected}>
                                          <option value="No">De</option>
                                          
                                              {
@@ -259,7 +317,7 @@ const handleSelecTem = (event) => {
                             
                          
 
-                    weight: <select className="plegablefrom" id='iniciokg' name='iniciokg' onChange={handlSeected}>
+                    weight: <select className="plegablefrom" id='iniciokg' name='iniciokg' onChange={handlSelected}>
                                          <option value="No">De</option>
                                          
                                              {
@@ -270,7 +328,7 @@ const handleSelecTem = (event) => {
                                          </select> 
                                          <label className='labeldosgs'>a</label>   
                                            
-                                           <select className="plegablefrom" id='finalkg' name='finalkg' onChange={handlSeected}>
+                                           <select className="plegablefrom" id='finalkg' name='finalkg' onChange={handlSelected}>
                                          <option value="No">De</option>
                                          
                                              {
@@ -284,7 +342,7 @@ const handleSelecTem = (event) => {
     
                            
                                             <br/>
-                                            Life Span: <select className="plegablefrom" id='iniciovida' name='iniciovida' onChange={handlSeected}>
+                                            Life Span: <select className="plegablefrom" id='iniciovida' name='iniciovida' onChange={handlSelected}>
                                          <option value="No">De</option>
                                          
                                              {
@@ -295,7 +353,7 @@ const handleSelecTem = (event) => {
                                          </select> 
                                          <label className='labeldosgs'>a</label>   
                                            
-                                           <select className="plegablefrom" id='finalvida' name='finalvida' onChange={handlSeected}>
+                                           <select className="plegablefrom" id='finalvida' name='finalvida' onChange={handlSelected}>
                                          <option value="No">De</option>
                                          
                                              {
@@ -340,7 +398,7 @@ const handleSelecTem = (event) => {
                 <div className='Selectedtem'>
                 Selecciona  
                 
-                <select className="filtro"  onChange={handleSelecTem}>
+                <select className="filtro" name="ElTemperament" id="ElTemperament"  onChange={handleSelecTem}>
                     <option value="No">Selecciona </option>
                             {
                         temperamento.map((element )=> (<option key={element.id}  value={element.name}>{element.name}</option>))
