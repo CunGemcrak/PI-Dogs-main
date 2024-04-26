@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import './SearchBar.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { FiltroInput, OrderAZ, FiltertTemperamento,  Copydog } from '../../Redux/actions'
+import { FiltroInput, OrderAZ, FiltertTemperamento,  Copydog, SeleccionaBD } from '../../Redux/actions'
 
 
 
@@ -29,6 +29,12 @@ const SearchBar = () =>{
  dispatch(FiltertTemperamento(valor))
  }
   }
+
+  const handelAPI_BD = (valor) => {
+    
+    alert("entro con" + valor)
+    dispatch(SeleccionaBD(valor))
+  }
     return <div className="container-SearchBar">
                 <div className='logo'> </div>
                 <Link to='/home'><div className='botones'>Home</div></Link>
@@ -46,6 +52,8 @@ const SearchBar = () =>{
               </select>
                     </div>
                   <div className='grupo'>
+                  <div className='botones' onClick={() => handelAPI_BD('API')}>API</div>
+                  <div className='botones' onClick={() => handelAPI_BD('BD')}>BD</div>
                     <div className="botones"  onClick={() => handelAZfinal('A')}>A a la Z</div>
                     <div className="botones"  onClick={() => handelAZfinal('B')}>Z a la A</div>
                   </div>

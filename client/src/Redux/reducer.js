@@ -1,4 +1,4 @@
-import { AllDOGS, FILTROINPUT, TEMPERAMENTO, ORDERAZ, FILTROTEMPERAMENTO, COPYDOG } from "./action-types";
+import { AllDOGS, FILTROINPUT, TEMPERAMENTO, ORDERAZ, FILTROTEMPERAMENTO, COPYDOG, IDBD } from "./action-types";
 
 const initialState = {
     allDogs: [],
@@ -56,6 +56,20 @@ const reducer = (state= initialState, {type, payload})=>{
                 ...state,
                 allDogs: state.copydogs
             } 
+        case IDBD: 
+        let bd = state.copydogs.slice();
+            const busquedatpBD = bd.filter(element => {
+                const tipoBD = element.bd;
+                if (tipoBD) {
+                    return tipoBD.toLowerCase().includes(payload?.toLowerCase());
+                }
+                return false;
+            });
+            console.log("Esta es la busqueda " + busquedatpBD);
+            return {
+                ...state,
+                allDogs:busquedatpBD
+            }
         default:
             return {...state}
     }

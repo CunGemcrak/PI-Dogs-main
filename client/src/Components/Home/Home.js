@@ -88,6 +88,7 @@ const handleback = ()=>{
                                 <label className="pagelabel">{ page }</label>
                         <img src={estrella} alt="mario" className="estrella"/>
                         <img src={derecha} alt="siguiente" className="siguiente" onClick={handleNex} />
+                        
                     </div>
                 </div>
     </div>

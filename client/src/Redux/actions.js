@@ -1,4 +1,4 @@
-import { AllDOGS, TEMPERAMENTO, FILTROINPUT, ORDERAZ, FILTROTEMPERAMENTO, COPYDOG } from "./action-types"
+import { AllDOGS, TEMPERAMENTO, FILTROINPUT, ORDERAZ, FILTROTEMPERAMENTO, COPYDOG, IDBD } from "./action-types"
 import axios from 'axios'
 
 export const Alldogs = () => {
@@ -100,6 +100,7 @@ export const FiltertTemperamento = (dato)=>{
     })
 }
 }
+
 export const Copydog = () =>{
     return async (dispatch) =>{
         dispatch({
@@ -109,3 +110,11 @@ export const Copydog = () =>{
 }
 }
 
+export const SeleccionaBD = (dato)=>{
+    return async (dispatch) =>{
+        dispatch({
+        type: IDBD,
+        payload: dato,
+    })
+}
+}
