@@ -10,7 +10,7 @@ const Temperamento = async (req, res) => {
         const foundDogs = await breeds.map(async (dog) => {
             const temperamentValue = dog.breeds[0]?.temperament;
             if (!temperamentValue) {
-                console.log("El temperamento es undefined o null.");
+              //  console.log("El temperamento es undefined o null.");
                 return []; // Retornar un array vacío si el temperamento no está definido
             }
 

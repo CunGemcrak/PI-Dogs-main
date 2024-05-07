@@ -28,7 +28,7 @@ const Detail = () => {
     }, [id]);
 
     const handleImage = (img1) => {
-        const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif'];
+        const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.bmp', '.webp'];
 
         const isValid = (imagen) => {
             if (!imagen) return false;

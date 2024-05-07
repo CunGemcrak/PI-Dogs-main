@@ -6,6 +6,7 @@ import derecha from '../../img/desplazar/derecha.png'
 import estrella from '../../img/desplazar/image.png'
 
 import buscando from '../../img/loading/loadingdog/loadingdog.gif'
+import noencontrado from '../../img/loading/loadingdog/noencontrado.png'
 
 
 import Cards from '../Cards/Cards';
@@ -27,6 +28,7 @@ const [startIndex, setStartIndex] = useState(storedStartIndex)
 const [endIndex, setEndIndex] = useState(storedEndIndex)
 const [page, setPage ] = useState(storedPage)
 const [ayuda, setAyuda] = useState(true)
+const [encontrado, setencontrado] = useState(buscando)
  // const [loading, setLoading]= useState(true)
 useEffect(() => {
 
@@ -44,6 +46,13 @@ useEffect(() => {
         }else{
             setAyuda(true)
         }
+
+        const timer = setTimeout(() => {
+           // setAyuda(false);
+            setencontrado(noencontrado)
+          }, 15000);
+      
+          return () => clearTimeout(timer);
 }, [startIndex, endIndex, page, busqueda.length]);
 
 
@@ -77,7 +86,7 @@ const handleback = ()=>{
 
     return <div className="contenedorHome">
         {ayuda === true
-        ?<img src={buscando} alt="dogs" className="ayuda"/>
+        ?<img src={encontrado} alt="dogs" className="ayuda"/>
         : <Cards className="containerHomeCard" startIndex={startIndex} endIndex={endIndex} busqueda={busqueda}/>
         }
         

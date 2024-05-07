@@ -26,12 +26,12 @@ const allDogs = async (req, res)=>{
 
 
 
-    console.log("el dog encontrado dent4o de la api es"+ JSON.stringify(modifiedDogs));
+    //console.log("el dog encontrado dent4o de la api es"+ JSON.stringify(modifiedDogs));
     if(!modifiedDogs.length){
-        console.log("Solo API")
+       // console.log("Solo API")
         return res.status(200).json({'api':datos})
     }
-    console.log("API and BD "+JSON.stringify(datos) + JSON.stringify(modifiedDogs))
+   // console.log("API and BD "+JSON.stringify(datos) + JSON.stringify(modifiedDogs))
     return res.status(200).json({'api':datos, 'bd':modifiedDogs})
 
     

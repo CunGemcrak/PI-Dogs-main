@@ -2,6 +2,7 @@ const validation = (userData)=>{
     
 const errors ={};
 const urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
+const imageExtensions = /\.(jpe?g|png|gif|bmp|webp)$/i;
 
 // Verificar si el nombre está vacío
 
@@ -33,39 +34,16 @@ if (userData.Temperament && userData.Temperament.trim().length === 0) {
 if (userData.Temperament && (userData.Temperament.trim().length < 4 || userData.Temperament.trim().length > 30)) {
     errors.Temperament = 'El Temperament debe tener entre 4  y 30 caracteres';
 }
-
-
-/*
-    if(!/^\d{4}\/\d{2}\/\d{2}$/.test(userData.release_date)){
-        errors.release_date = 'La fecha debe tener el formato AAAA/MM/DD';
-    } else
-
-
-    if(!userData.rating && userData.rating.trim().length === 0){
-        errors.rating = 'El rating no deben estar Vacios';
-    }else
-    if(!/^\d+$/.test(userData.rating)){
-        errors.rating = 'Debe ser un número';
-    }else
-    if(!userData.platforms && userData.platforms.trim().length === 0){
-        errors.platforms = 'El rating no deben estar Vacios';
-    }else
-    
-    if(!userData.genres && userData.genres.trim().length === 0){
-        errors.genres = 'La imagen no deben estar Vacios';
-    }else
-    if(!userData.image && userData.image.trim().length === 0){
-        errors.image = 'La imagen no deben estar Vacios';
-    }else
-    */
     if(!urlPattern.test(userData.image)){
         errors.image = 'Por favor, ingrese una URL válida para la imagen';
     }else
     if(!userData.image && userData.image.trim().length === 0){
         errors.image = 'La imagen no deben estar Vacios';
-    }
+    }else
     if (userData.image && (userData.image.trim().length >254)) {
         errors.Temperament = 'URL de Imagen muy larga';
+    } else if (!imageExtensions.test(userData.image)) {
+        errors.image = 'La URL debe terminar en una extensión de imagen válida (.jpg, .jpeg, .png, .gif, .bmp, .webp)';
     }
     
 

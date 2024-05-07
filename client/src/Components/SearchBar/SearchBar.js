@@ -32,7 +32,7 @@ const SearchBar = () =>{
 
   const handelAPI_BD = (valor) => {
     
-    alert("entro con" + valor)
+   // alert("entro con" + valor)
     dispatch(SeleccionaBD(valor))
   }
     return <div className="container-SearchBar">
